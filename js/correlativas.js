@@ -60,15 +60,15 @@ $scope.rural=[
    $scope.correlativas_civil();
  };
  $scope.cursa_electrica=function(index){
-   $scope.electrica[index].regular=!$scope.civil[index].regular;
+   $scope.electrica[index].regular=!$scope.electrica[index].regular;
    $scope.correlativas_electrica();
  };
  $scope.cursa_industrial=function(index){
-   $scope.industrial[index].regular=!$scope.civil[index].regular;
+   $scope.industrial[index].regular=!$scope.industrial[index].regular;
    $scope.correlativas_industrial();
  };
  $scope.cursa_rural=function(index){
-   $scope.rural[index].regular=!$scope.civil[index].regular;
+   $scope.rural[index].regular=!$scope.rural[index].regular;
    $scope.correlativas_rural();
  };
 
@@ -78,15 +78,15 @@ $scope.rural=[
    $scope.correlativas_civil();
  };
  $scope.no_cursa_electrica=function(index){
-   $scope.electrica[index].regular=!$scope.civil[index].regular;
+   $scope.electrica[index].regular=!$scope.electrica[index].regular;
    $scope.correlativas_electrica();
  };
  $scope.no_cursa_industrial=function(index){
-   $scope.industrial[index].regular=!$scope.civil[index].regular;
+   $scope.industrial[index].regular=!$scope.industrial[index].regular;
    $scope.correlativas_industrial();
  };
  $scope.no_cursa_rural=function(index){
-   $scope.rural[index].regular=!$scope.civil[index].regular;
+   $scope.rural[index].regular=!$scope.rural[index].regular;
    $scope.correlativas_rural();
  };
 
@@ -193,7 +193,7 @@ $scope.rural=[
      $scope.segundo_industrial.push("Economia General");
    };
    //Informatica I
-   if($scope.industrial[0].regular && $scope.industrial[5].regular){
+   if($scope.industrial[5].regular){
      $scope.segundo_industrial.push("Informatica II");
    };
    //Si no tiene al menos dos aprobadas

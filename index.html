@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" ng-app="Principal">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+  <title>Correlatividades para ingresantes UTN FRCon</title>
+</head>
+<body>
+    <!--Cabeza del documento-->
+    <header class="container-fluid">
+      <div class="row">
+        <div class="col-xs-6 col-sm-4 col-md-4 ">
+          <img src="images/logoutn.png" class="img-thumbnail img-responsive"/>
+        </div>
+        <div class="col-xs-6 col-sm-8 col-md-8 ">
+          <h1 class="text-right ">Programa Orientado al uso de Correlativas.</h1>
+          <h3 class="text-right text-muted"><small>Diseñado para los alumnos de la FRCON.</small></h3>
+        </div>
+      </div>
+          <h4 class="text-info text-left">
+            Asi como fue explicado en la clase, hay materias que nos ayudan a
+            cursar materias de años superiores, pero no siempre nos acordamos
+            o llegamos a entender del todo a <strong>que se refieren
+            con esto</strong>.<br>
+            Es por esto que decidimos crear una aplicacion web que los ayude
+            (en el momento que crean correcto o necesiten) a ver de una manera
+            interactiva todo lo que se hablo en clase. <br>
+            La manera en que funciona esto, es seleccionando tu carrera, luego
+            colocando las materias que queres/crees regularizar, y luego de
+            manera automatica vas a poder ver a la derecha (o abajo si lo ves desde un celular o tablet) las materias de segundo
+            año que vas a poder cursar.<br>
+            <strong>ATENCION:</strong>Lo mostrado en este programa <strong>NO</strong> incluye posibles superposiciones de horarios en materias,
+            como podria presentarse en el caso de recursar alguna.
+          </h4>
+    </header>
+    <!--Seccion principal del programa-->
+    <section class="container-fluid">
+      <!--contenedor principal para carreras-->
+      <!--Menu de carreras-->
+      <div class="btn-group-vertical btn-group-lg center-block col-md-12" ng-controller="primaryController">
+            <a class="btn btn-primary btn-civil">Ingenieria Civil</a>
+            <!--Clase columna para btn-civil-->
+          <div id="desp-civil">
+
+            <div class="row">
+              <div class="col-md-6 table-responsive">
+                <!--Tabla con las materias-->
+                <table class="table table-striped table-bordered">
+                    <tr>
+                      <td class="text-center">Materia de Primero</td>
+                      <td class="text-center">Estado</td>
+                    </tr>
+                    <tr ng-repeat="alCivil in civil">
+                      <td>
+                        {{alCivil.materia}}
+                      </td>
+                      <td>
+                        <div class="btn-group btn-toggle">
+                            <button class="btn btn-sm btn-default" ng-click="cursa_civil($index)">Regular/Aprobo</button>
+                            <button class="btn btn-sm btn-primary active" ng-click="no_cursa_civil($index)">No Regular</button>
+                        </div>
+                      </td>
+                    </tr>
+
+                </table>
+              </div>
+              <div class="col-md-6">
+                <!--Aca van los resultados propuestos arriba-->
+                <div class="table-responsive">
+                  <table class="table table-striped table-bordered">
+                    <tr>
+                      <td class="text-center">
+                        Materias que se pueden cursar en 2do. año
+                      </td>
+                    </tr>
+                    <tr ng-repeat="alCursa_civil in segundo_civil">
+                      <td class="text-center">
+                        {{alCursa_civil}}
+                      </td>
+                    </tr>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+
+            <a class="btn btn-warning btn-electrica">Ingenieria Electrica</a>
+            <div id="desp-electrica">
+              <!--Clase columna para btn-electrica-->
+              <div class="row">
+                <div class="col-md-6 table-responsive">
+                  <!--Tabla con las materias-->
+
+                  <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">Materia de Primero</td>
+                        <td class="text-center">Estado</td>
+                      </tr>
+                      <tr ng-repeat="alElectrica in electrica">
+                        <td>
+                          {{alElectrica.materia}}
+                        </td>
+                        <td>
+                          <div class="btn-group btn-toggle">
+                              <button class="btn btn-sm btn-default" ng-click="cursa_electrica($index)">Regular/Aprobo</button>
+                              <button class="btn btn-sm btn-primary active" ng-click="no_cursa_electrica($index)">No Regular</button>
+                          </div>
+                        </td>
+                      </tr>
+
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <!--Aca van los resultados propuestos arriba-->
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">
+                          Materias que se pueden cursar en 2do. año
+                        </td>
+                      </tr>
+                      <tr ng-repeat="alCursa_electrica in segundo_electrica">
+                        <td class="text-center">
+                          {{alCursa_electrica}}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a class="btn btn-info btn-industrial">Ingenieria Industrial</a>
+            <!--Clase columna para btn-industrial-->
+            <div id="desp-industrial">
+              <div class="row">
+                <div class="col-md-6 table-responsive">
+                  <!--Tabla con las materias-->
+                  <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">Materia de Primero</td>
+                        <td class="text-center">Estado</td>
+                      </tr>
+                      <tr ng-repeat="alIndustrial in industrial">
+                        <td>
+                          {{alIndustrial.materia}}
+                        </td>
+                        <td>
+                          <div class="btn-group btn-toggle">
+                              <button class="btn btn-sm btn-default" ng-click="cursa_industrial($index)">Regular/Aprobo</button>
+                              <button class="btn btn-sm btn-primary active" ng-click="no_cursa_industrial($index)">No Regular</button>
+                          </div>
+                        </td>
+                      </tr>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <!--Aca van los resultados propuestos arriba-->
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">
+                          Materias que se pueden cursar en 2do. año
+                        </td>
+                      </tr>
+                      <tr ng-repeat="alCursa_industrial in segundo_industrial">
+                        <td class="text-center">
+                          {{alCursa_industrial}}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <a class="btn btn-success btn-rural">Lic. en Administracion Rural</a>
+            <!--Clase de btn-rural-->
+            <div id="desp-rural">
+              <div class="row">
+                <div class="col-md-6 table-responsive">
+                  <!--Tabla con las materias-->
+                  <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">Materia de Primero</td>
+                        <td class="text-center">Estado</td>
+                      </tr>
+                      <tr ng-repeat="alRural in rural">
+                        <td>
+                          {{alRural.materia}}
+                        </td>
+                        <td>
+                          <div class="btn-group btn-toggle">
+                              <button class="btn btn-sm btn-default" ng-click="cursa_rural($index)">Regular/Aprobo</button>
+                              <button class="btn btn-sm btn-primary active" ng-click="no_cursa_rural($index)">No Regular</button>
+                          </div>
+                        </td>
+                      </tr>
+                  </table>
+                </div>
+                <div class="col-md-6">
+                  <!--Aca van los resultados propuestos arriba-->
+                  <div class="table-responsive">
+                    <table class="table table-striped table-bordered">
+                      <tr>
+                        <td class="text-center">
+                          Materias que se pueden cursar en 2do. año
+                        </td>
+                      </tr>
+                      <tr ng-repeat="alCursa_rural in segundo_rural">
+                        <td class="text-center">
+                          {{alCursa_rural}}
+                        </td>
+                      </tr>
+                    </table>
+                  </div>
+                </div>
+              </div>
+            </div>
+      </div>
+    </section>
+    <footer class="container fluid">
+      <div class="text-right text-primary">
+        <h5>
+          <strong>
+
+            Programa creado por Dual Giupponi.<br>
+            Secretaria de Informatica y Planeamiento.<br>
+          </strong>
+        </h5>
+        <strong>
+          Centro de Estudiantes AETIC.<br>
+        </strong>
+      </div>
+    </footer>
+
+    <!--Parte de carga del programa principal-->
+    <script type="text/javascript" src="js/jquery-2.2.0.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/angular.min.js"></script>
+    <script type="text/javascript" src="js/correlativas.js"></script>
+    <script type="text/javascript" src="js/slider.js"></script
+</body>
+</html>
